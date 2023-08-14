@@ -8,12 +8,20 @@ package calculador;
  *
  * @author Usuario
  */
-public class Quadrado {
+public class Poligono {
     double valorDoLado;
-    public Quadrado(double valorDoLado){
+    int numDeLados;
+    public Poligono(double valorDoLado, int numDeLados){
         this.valorDoLado = valorDoLado;
+        this.numDeLados = numDeLados;
     }
-    double calcularArea(){
+    double calcularAreaTriangulo(){
+        double area;
+        area = (valorDoLado*valorDoLado*Math.sqrt(3))/4;
+        return area;
+   }
+    
+    double calcularAreaQuadrado(){
         double area;
         area = valorDoLado*valorDoLado;
         return area;

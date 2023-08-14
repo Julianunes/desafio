@@ -23,9 +23,8 @@ public class Calculador {
         format.setMaximumFractionDigits(2);
         format.setMinimumFractionDigits(1);
         
-        List<String> ordem = new LinkedList<String>();
+        List<Poligono> ordem = new LinkedList<Poligono>();
         
-        double soma = 0;
         int op = 0;
         do{
             try{
@@ -64,23 +63,28 @@ public class Calculador {
                         System.out.println("ERRO 2: Valor de entrada invalido");
                         continue;
                     }
-                    if(numDeLados == 3){
-                        Triangulo triangulo = new Triangulo(valorDoLado);
-                        soma = soma + triangulo.calcularArea();
-                        ordem.add("Triangulo de lado " + triangulo.valorDoLado + "cm"
-                                + " com area de " + format.format(triangulo.calcularArea()));
-                        
-                   
-                    }else if(numDeLados == 4){
-                        Quadrado quadrado = new Quadrado(valorDoLado);
-                        soma = soma + quadrado.calcularArea();
-                        ordem.add("Quadrado de lado " + quadrado.valorDoLado + "cm"
-                                + " com area de " + format.format(quadrado.calcularArea()));
-                    }
+                    Poligono poligono = new Poligono(valorDoLado, numDeLados);
+                    ordem.add(poligono);
                     break;
                 case 2:
-                    for(String o : ordem){
-                        System.out.println(o);
+                    double area;
+                    double soma = 0;
+                    for(Poligono o : ordem){
+                        if(o.numDeLados == 3){
+                            area = o.calcularAreaTriangulo();
+                            soma = soma + area;
+                            System.out.println("Triangulo de lado "
+                                    + o.valorDoLado +
+                                    " e area de "
+                                    + format.format(area));
+                        }else if(o.numDeLados == 4){
+                            area = o.calcularAreaQuadrado();
+                            soma = soma + area;
+                            System.out.println("Quadrado de lado "
+                                    + o.valorDoLado +
+                                    " e area de "
+                                    + format.format(area));
+                        }
                     }
                     System.out.println("Soma das areas "+format.format(soma));
                     break;
