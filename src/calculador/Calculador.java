@@ -37,8 +37,6 @@ public class Calculador {
                 continue;
             }
             switch(op){
-                case 0: 
-                    break;
                 case 1:
                     int numDeLados = 0;
                     double valorDoLado = 0;
@@ -86,10 +84,12 @@ public class Calculador {
                     }
                     System.out.println("Soma das areas "+format.format(soma));
                     break;
+                case 3:
+                    break;
                 default:
-                    System.out.println("ERRO 1: Valor invalido: Nao eh 1 ou 2");
+                    System.out.println("ERRO 1: Valor invalido: Nao eh 1 ou 2 ou 3");
             }
-        }while(op !=0);
+        }while(op !=3);
 
     }
     
@@ -98,7 +98,7 @@ public class Calculador {
             + "Digite '1' p/ inserir " //Ao digitar 1 o programa continuará inserindo valores
             + ", "
             + "Digite '2' p/ calcular area ou "
-            + "Digite '0' p/ parar programa"); //Digitar 0 para calcular areas
+            + "Digite '3' p/ parar programa"); //Digitar 0 para calcular areas
     }
     
 }
